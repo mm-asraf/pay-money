@@ -1,5 +1,5 @@
 
-import {register} from "../controllers/TblUserController.js"
+import {register} from "../controllers/UserController.js"
 import express from "express"
 const userRouter  = express.Router();
 

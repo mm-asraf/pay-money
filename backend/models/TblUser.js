@@ -3,38 +3,13 @@ import { number, string } from "zod";
 
 const userSchema = new mongoose.Schema({
 
-    username:{
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        lowercase: true,
-        minLength: 3,
-        maxLength: 30
-
-    },
-    password: {
-        type: String,
-        required: true,
-        minLength: 6
-    },
-    firstName: {
-        type: String,
-        required: true,
-        trim: true,
-        maxLength: 50
-    },
-    lastName: {
-        type: String,
-        required: true,
-        trim: true,
-        maxLength: 50
-    },
-    walletBalance:{
-        type:Number,
-        default:0,
-
-    },
+    fullName: { type: String, required: true },
+    dob: { type: Date, required: true },
+    gender: { type: String },
+    address: { type: String },
+    phone: { type: String, unique: true },
+    email: { type: String, unique: true },
+    kycVerified: { type: Boolean, default: false },
   
 },{
    versionKey:false,

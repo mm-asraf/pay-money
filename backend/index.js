@@ -1,15 +1,16 @@
 import express from 'express'
 import connectDB from "./db.js";
 import dotenv from 'dotenv'
+dotenv.config();
 import AppError from './errorHandlers/AppError.js';
 
 //routes
-import { userRouter } from './routes/TblUserRoutes.js'; 
-import {accountRouter} from "./routes/TblAccountRoutes.js"
+import { userRouter } from './routes/UserRoutes.js'; 
+import {accountRouter} from "./routes/AccountRoutes.js"
+import { transactionRouter } from './routes/TransactionRoutes.js';
 
 
 
-dotenv.config();
 const app = express();
 app.use(express.json());
 
@@ -61,6 +62,7 @@ app.use(globalErrorHandler);
 //routes
 app.use("/api/v1/user",userRouter)
 app.use("/api/v1/account",accountRouter)
+app.use("/api/v1/transfer",transactionRouter)
 
 
 

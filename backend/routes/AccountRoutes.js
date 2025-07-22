@@ -1,4 +1,4 @@
-import {createBankAccount} from "../controllers/TblAccounts.js";
+import {createBankAccount} from "../controllers/AccountsController.js";
 import express from "express"
 const accountRouter = express.Router();
 

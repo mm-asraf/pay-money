@@ -1,34 +1,23 @@
 import mongoose,{model} from 'mongoose';
 const transactionSchema = new mongoose.Schema(
   {
-    user: {
+    userId: {
       type: mongoose.Schema.ObjectId,
       ref: "TblUser",
       required: true,
     },
     transactionType: {
       type: String,
-      enum: ["credit", "debit"],
+      enum: ["CREDIT", "DEBIT"],
       required: true,
     },
     amount: {
-      type: number,
+      type: Number,
       required: true,
     },
-    from: {
-      type: mongoose.Schema.ObjectId,
-      ref: "TblUser",
-    },
-    to: {
-      type: mongoose.Schema.ObjectId,
-      ref: "TblUser",
-    },
-    purpose: {
-      type: String,
-      enum: ["TRANSFER", "RECHARGE", "BILL", "ADD_MONEY"],
-      required: true,
-    },
-    status: { type: String, enum: ["SUCCESS", "FAILED"], default: "SUCCESS" },
+    purpose: { type: String, enum: ['TRANSFER', 'RECHARGE', 'BILL', 'WITHDRAWAL', 'DEPOSIT'], required: true },
+    status: { type: String, enum: ['SUCCESS', 'FAILED'], default: 'SUCCESS' },
+    relatedAccountId: { type: mongoose.Schema.Types.ObjectId, ref: 'Tbl_Accounts' },
     createdAt: { type: Date, default: Date.now },
   },
   {
@@ -38,4 +27,4 @@ const transactionSchema = new mongoose.Schema(
 );
 
 
-export default model("TblTransaction",transactionSchema)
+export default model("Tbl_Transaction",transactionSchema)
